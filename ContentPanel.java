@@ -1,3 +1,5 @@
+import javafx.util.Pair;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -6,42 +8,29 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Map;
 
 public class ContentPanel extends JPanel {
+    static int counter = 0;
+    static int correctCounter = 0;
     public ContentPanel(int rows, int columns){
         final JLabel imageLabel = loadImage();
         JPanel panel = new JPanel(new GridBagLayout());
         panel.setBackground(Color.WHITE);
-        GridBagConstraints gbc = new GridBagConstraints();
-        for(int row = 0; row < rows; row++){
-            for(int col = 0; col < columns; col++){
-                gbc.gridx = row;
-                gbc.gridy = col;
+        panel.add(imageLabel, new GridBagConstraints());
 
-                Border border = null;
-                if (row < rows-1) {
-                    if (col < columns-1) {
-                        border = new MatteBorder(1, 1, 0, 0, Color.GRAY);
-                    } else {
-                        border = new MatteBorder(1, 1, 0, 1, Color.GRAY);
-                    }
-                } else {
-                    if (col < columns-1) {
-                        border = new MatteBorder(1, 1, 1, 0, Color.GRAY);
-                    } else {
-                        border = new MatteBorder(1, 1, 1, 1, Color.GRAY);
-                    }
-                }
-                imageLabel.setBorder(border);
-            }
-        }
-        panel.add(imageLabel, gbc);
         imageLabel.addMouseListener(new MouseAdapter()
         {
             public void mousePressed(MouseEvent e)
             {
                 Point p = e.getPoint();
+                counter++;
+                checkCoordinates(p, counter);
+                if(counter >= 3){
+                    counter = 0;
+                    correctCounter = 0;
+                }
                 System.out.println(p.getX()+", "+p.getY());
             }
         });
@@ -49,12 +38,37 @@ public class ContentPanel extends JPanel {
         add(panel);
     }
 
-    private Map<Rectangle[], Integer> getClickableRegions(JLabel label)
+    private void checkCoordinates(Point p, int counter)
     {
-        int w = label.getWidth();
-        int h = label.getHeight();
+        Pair<Double, Double> firstPoint = new Pair<>(923.0, 921.0);
+        Pair first = new Pair<>(firstPoint, 1);
 
-        return null;
+        Pair<Double, Double> secondPoint = new Pair<>(1047.0, 690.0);
+        Pair second = new Pair<>(secondPoint, 2);
+
+        Pair<Double, Double> thirdPoint = new Pair<>(374.0, 818.0);
+        Pair third = new Pair<>(thirdPoint, 3);
+
+        double x = p.getX();
+        double y = p.getY();
+        if(counter == 1){
+            if(Math.abs(x - firstPoint.getKey()) <= 10 && Math.abs(y - firstPoint.getValue()) <= 10){
+                correctCounter++;
+            }
+        }
+        else if(counter == 2){
+            if(Math.abs(x - secondPoint.getKey()) <= 10 && Math.abs(y - secondPoint.getValue()) <= 10){
+                correctCounter++;
+            }
+        }
+        else{
+            if(Math.abs(x - thirdPoint.getKey()) <= 10 && Math.abs(y - thirdPoint.getValue()) <= 10){
+                correctCounter++;
+            }
+        }
+        if(correctCounter == 3){
+            System.out.println("Correct password!");
+        }
     }
 
     private JLabel loadImage()
