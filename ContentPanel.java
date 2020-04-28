@@ -15,7 +15,8 @@ public class ContentPanel extends JPanel {
     static int counter = 0;
     static int correctCounter = 0;
     public ContentPanel(int rows, int columns){
-        final JLabel imageLabel = loadImage();
+        final JLabel imageLabel = loadImage("waterfall.jpg");
+
         JPanel panel = new JPanel(new GridBagLayout());
         panel.setBackground(Color.WHITE);
         panel.add(imageLabel, new GridBagConstraints());
@@ -27,9 +28,17 @@ public class ContentPanel extends JPanel {
                 Point p = e.getPoint();
                 counter++;
                 checkCoordinates(p, counter);
-                if(counter >= 3){
+                if(correctCounter == 3){
+                    JOptionPane.showMessageDialog(null, "Correct password! Good job.");
                     counter = 0;
                     correctCounter = 0;
+                }
+                else {
+                    if (counter >= 3) {
+                        JOptionPane.showMessageDialog(null, "Incorrect password!");
+                        counter = 0;
+                        correctCounter = 0;
+                    }
                 }
                 System.out.println(p.getX()+", "+p.getY());
             }
@@ -52,17 +61,17 @@ public class ContentPanel extends JPanel {
         double x = p.getX();
         double y = p.getY();
         if(counter == 1){
-            if(Math.abs(x - firstPoint.getKey()) <= 10 && Math.abs(y - firstPoint.getValue()) <= 10){
+            if(Math.abs(x - firstPoint.getKey()) <= 30 && Math.abs(y - firstPoint.getValue()) <= 30){
                 correctCounter++;
             }
         }
         else if(counter == 2){
-            if(Math.abs(x - secondPoint.getKey()) <= 10 && Math.abs(y - secondPoint.getValue()) <= 10){
+            if(Math.abs(x - secondPoint.getKey()) <= 30 && Math.abs(y - secondPoint.getValue()) <= 30){
                 correctCounter++;
             }
         }
         else{
-            if(Math.abs(x - thirdPoint.getKey()) <= 10 && Math.abs(y - thirdPoint.getValue()) <= 10){
+            if(Math.abs(x - thirdPoint.getKey()) <= 30 && Math.abs(y - thirdPoint.getValue()) <= 30){
                 correctCounter++;
             }
         }
@@ -71,9 +80,8 @@ public class ContentPanel extends JPanel {
         }
     }
 
-    private JLabel loadImage()
+    private JLabel loadImage(String fileName)
     {
-        String fileName = "waterfall.jpg";
         Image image = null;
         try
         {
