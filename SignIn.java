@@ -38,7 +38,6 @@ class SignIn extends JPanel {
                         correctCounter = 0;
                     }
                 }
-                System.out.println(p.getX()+", "+p.getY());
             }
         });
         setLayout(new BorderLayout());
@@ -85,9 +84,6 @@ class SignIn extends JPanel {
             if(Math.abs(x - thirdPoint.getKey()) <= 30 && Math.abs(y - thirdPoint.getValue()) <= 30){
                 correctCounter++;
             }
-        }
-        if(correctCounter == 3){
-            System.out.println("Correct password!");
         }
     }
 }

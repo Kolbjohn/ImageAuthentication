@@ -32,7 +32,6 @@ class RegisterClicks extends JPanel {
                     counter = 0;
                     jf.dispose();
                 }
-                System.out.println(p.getX()+", "+p.getY());
             }
         });
         setLayout(new BorderLayout());
