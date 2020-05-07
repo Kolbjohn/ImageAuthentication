@@ -8,11 +8,11 @@ import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class RegisterClicks extends JPanel {
-    static int counter = 0;
-    public static ArrayList<Pair<Double, Double>> sequence = new ArrayList<>();
+class RegisterClicks extends JPanel {
+    private static int counter = 0;
+    static ArrayList<Pair<Double, Double>> sequence = new ArrayList<>();
 
-    public RegisterClicks(JFrame jf){
+    RegisterClicks(JFrame jf){
         sequence.clear();
         final JLabel imageLabel = loadImage(Register.chosenImage);
 
@@ -39,7 +39,7 @@ public class RegisterClicks extends JPanel {
         add(panel);
     }
 
-    public static JLabel loadImage(String fileName)
+    private static JLabel loadImage(String fileName)
     {
         Image image = null;
         try
@@ -51,6 +51,7 @@ public class RegisterClicks extends JPanel {
         {
             System.out.println("read: " + ioe.getMessage());
         }
+        assert image != null;
         return new JLabel(new ImageIcon(image));
     }
 }

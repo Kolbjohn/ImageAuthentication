@@ -7,10 +7,10 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.net.URL;
 
-public class SignIn extends JPanel {
-    static int counter = 0;
-    static int correctCounter = 0;
-    public SignIn(JFrame jf){
+class SignIn extends JPanel {
+    private static int counter = 0;
+    private static int correctCounter = 0;
+    SignIn(JFrame jf){
 
         final JLabel imageLabel = loadImage(Register.chosenImage);
 
@@ -45,7 +45,7 @@ public class SignIn extends JPanel {
         add(panel);
     }
 
-    public static JLabel loadImage(String fileName)
+    private static JLabel loadImage(String fileName)
     {
         Image image = null;
         try
@@ -57,6 +57,7 @@ public class SignIn extends JPanel {
         {
             System.out.println("read: " + ioe.getMessage());
         }
+        assert image != null;
         return new JLabel(new ImageIcon(image));
     }
 

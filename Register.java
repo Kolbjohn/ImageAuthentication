@@ -1,5 +1,3 @@
-import javafx.util.Pair;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -9,10 +7,10 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class Register extends JPanel {
-    public static String chosenImage = "";
+class Register extends JPanel {
+    static String chosenImage = "";
 
-    public Register(JFrame jf){
+    Register(JFrame jf){
         JPanel panel = new JPanel(new GridBagLayout());
         panel.setBackground(Color.WHITE);
 
@@ -109,6 +107,7 @@ public class Register extends JPanel {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        assert img != null;
         return img.getScaledInstance(350, 180,
                 Image.SCALE_SMOOTH);
     }

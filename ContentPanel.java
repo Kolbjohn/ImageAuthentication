@@ -3,9 +3,9 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class ContentPanel extends JPanel {
+class ContentPanel extends JPanel {
 
-    public ContentPanel(){
+    ContentPanel(){
 
         JPanel panel = new JPanel(new GridBagLayout());
         panel.setBackground(Color.WHITE);
