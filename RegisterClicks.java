@@ -6,13 +6,15 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.net.URL;
+import java.util.ArrayList;
 
-public class SignIn extends JPanel {
+public class RegisterClicks extends JPanel {
     static int counter = 0;
     static int correctCounter = 0;
-    public SignIn(int i, int i1){
+    public static ArrayList<Pair<Double, Double>> sequence = new ArrayList<>();
 
-        final JLabel imageLabel = loadImage(Register.chosenImage);
+    public RegisterClicks(int i, int i1){
+        final JLabel imageLabel = loadImage("waterfall.jpg");
 
         JPanel panel = new JPanel(new GridBagLayout());
         panel.setBackground(Color.WHITE);
@@ -44,24 +46,8 @@ public class SignIn extends JPanel {
         add(panel);
     }
 
-    public static JLabel loadImage(String fileName)
-    {
-        Image image = null;
-        try
-        {
-            URL url = ContentPanel.class.getResource(fileName);
-            image = ImageIO.read(url);
-        }
-        catch(Exception ioe)
-        {
-            System.out.println("read: " + ioe.getMessage());
-        }
-        return new JLabel(new ImageIcon(image));
-    }
-
     private void checkCoordinates(Point p, int counter)
     {
-        System.out.println(counter);
         Pair<Double, Double> firstPoint = new Pair<>(923.0, 921.0);
         Pair first = new Pair<>(firstPoint, 1);
 
@@ -91,5 +77,20 @@ public class SignIn extends JPanel {
         if(correctCounter == 3){
             System.out.println("Correct password!");
         }
+    }
+
+    public static JLabel loadImage(String fileName)
+    {
+        Image image = null;
+        try
+        {
+            URL url = ContentPanel.class.getResource(fileName);
+            image = ImageIO.read(url);
+        }
+        catch(Exception ioe)
+        {
+            System.out.println("read: " + ioe.getMessage());
+        }
+        return new JLabel(new ImageIcon(image));
     }
 }

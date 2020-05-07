@@ -1,6 +1,3 @@
-import javafx.util.Pair;
-
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -22,6 +19,10 @@ public class ContentPanel extends JPanel {
         {
             public void mousePressed(MouseEvent e)
             {
+                if(Register.chosenImage.isEmpty()){
+                    JOptionPane.showMessageDialog(null, "Please register first!");
+                    return;
+                }
                 JFrame f = new JFrame();
                 f.setContentPane(new SignIn(5,5));
                 f.setSize(1920,1080);
@@ -37,9 +38,10 @@ public class ContentPanel extends JPanel {
             {
                 JFrame f = new JFrame();
                 f.setContentPane(new Register(5,5));
-                f.setSize(1920,1080);
+                f.setSize(1920,600);
                 f.setLocation(0,0);
                 f.setResizable(false);
+                f.setLocationRelativeTo(null);
                 f.setVisible(true);
             }
         });

@@ -5,90 +5,78 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 
 public class Register extends JPanel {
-    static int counter = 0;
-    static int correctCounter = 0;
-    public Register(int i, int i1){
-        final JLabel imageLabel = loadImage("waterfall.jpg");
+    public static String chosenImage = "";
 
+    public Register(int i, int i1){
         JPanel panel = new JPanel(new GridBagLayout());
         panel.setBackground(Color.WHITE);
-        panel.add(imageLabel, new GridBagConstraints());
 
-        imageLabel.addMouseListener(new MouseAdapter()
-        {
-            public void mousePressed(MouseEvent e)
-            {
-                Point p = e.getPoint();
-                counter++;
-                checkCoordinates(p, counter);
-                if(correctCounter == 3){
-                    JOptionPane.showMessageDialog(null, "Correct password! Good job.");
-                    counter = 0;
-                    correctCounter = 0;
-                }
-                else {
-                    if (counter >= 3) {
-                        JOptionPane.showMessageDialog(null, "Incorrect password!");
-                        counter = 0;
-                        correctCounter = 0;
-                    }
-                }
-                System.out.println(p.getX()+", "+p.getY());
+        Icon first = new ImageIcon(getResizedImage("waterfall.jpg"));
+        JButton pic1 = new JButton(first);
+
+        Icon second = new ImageIcon(getResizedImage("animal.jpg"));
+        JButton pic2 = new JButton(second);
+
+        Icon third = new ImageIcon(getResizedImage("beach.jpg"));
+        JButton pic3 = new JButton(third);
+
+        Icon fourth = new ImageIcon(getResizedImage("city.jpg"));
+        JButton pic4 = new JButton(fourth);
+
+        Icon fifth = new ImageIcon(getResizedImage("mountains.jpg"));
+        JButton pic5 = new JButton(fifth);
+
+        panel.add(pic1);
+        panel.add(pic2);
+        panel.add(pic3);
+        panel.add(pic4);
+        panel.add(pic5);
+
+        pic1.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent e) {
+
             }
         });
+        pic2.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent e) {
+
+            }
+        });
+        pic3.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent e) {
+
+            }
+        });
+        pic4.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent e) {
+
+            }
+        });
+        pic5.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent e) {
+
+            }
+        });
+
         setLayout(new BorderLayout());
         add(panel);
     }
 
-    public static JLabel loadImage(String fileName)
-    {
-        Image image = null;
-        try
-        {
-            URL url = ContentPanel.class.getResource(fileName);
-            image = ImageIO.read(url);
+    private Image getResizedImage(String url){
+        BufferedImage img = null;
+        try {
+            img = ImageIO.read(new File(url));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        catch(Exception ioe)
-        {
-            System.out.println("read: " + ioe.getMessage());
-        }
-        return new JLabel(new ImageIcon(image));
-    }
-
-    private void checkCoordinates(Point p, int counter)
-    {
-        System.out.println(counter);
-        Pair<Double, Double> firstPoint = new Pair<>(923.0, 921.0);
-        Pair first = new Pair<>(firstPoint, 1);
-
-        Pair<Double, Double> secondPoint = new Pair<>(1047.0, 690.0);
-        Pair second = new Pair<>(secondPoint, 2);
-
-        Pair<Double, Double> thirdPoint = new Pair<>(374.0, 818.0);
-        Pair third = new Pair<>(thirdPoint, 3);
-
-        double x = p.getX();
-        double y = p.getY();
-        if(counter == 1){
-            if(Math.abs(x - firstPoint.getKey()) <= 30 && Math.abs(y - firstPoint.getValue()) <= 30){
-                correctCounter++;
-            }
-        }
-        else if(counter == 2){
-            if(Math.abs(x - secondPoint.getKey()) <= 30 && Math.abs(y - secondPoint.getValue()) <= 30){
-                correctCounter++;
-            }
-        }
-        else{
-            if(Math.abs(x - thirdPoint.getKey()) <= 30 && Math.abs(y - thirdPoint.getValue()) <= 30){
-                correctCounter++;
-            }
-        }
-        if(correctCounter == 3){
-            System.out.println("Correct password!");
-        }
+        return img.getScaledInstance(350, 180,
+                Image.SCALE_SMOOTH);
     }
 }

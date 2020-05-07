@@ -15,7 +15,7 @@ public class ImageAuth {
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setContentPane(new ContentPanel());
         f.setSize(400,200);
-        f.setLocation(0,0);
+        f.setLocationRelativeTo(null);
         f.setResizable(false);
         f.setVisible(true);
     }
