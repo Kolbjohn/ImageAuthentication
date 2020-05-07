@@ -19,7 +19,19 @@ public class ContentPanel extends JPanel {
 
         JPanel panel = new JPanel(new GridBagLayout());
         panel.setBackground(Color.WHITE);
-        panel.add(imageLabel, new GridBagConstraints());
+        JButton button = new JButton("Sign In");
+        JButton button2 = new JButton("Register");
+        button.addMouseListener(new MouseAdapter()
+        		{
+        	public void mousePressed(MouseEvent e)
+        	{
+        		panel.add(imageLabel, new GridBagConstraints());
+        	}
+        		}
+        		);
+        panel.add(button);
+        panel.add(button2);
+        
 
         imageLabel.addMouseListener(new MouseAdapter()
         {
