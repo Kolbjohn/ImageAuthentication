@@ -10,7 +10,7 @@ import java.net.URL;
 public class SignIn extends JPanel {
     static int counter = 0;
     static int correctCounter = 0;
-    public SignIn(int i, int i1){
+    public SignIn(JFrame jf){
 
         final JLabel imageLabel = loadImage(Register.chosenImage);
 
@@ -29,6 +29,7 @@ public class SignIn extends JPanel {
                     JOptionPane.showMessageDialog(null, "Correct password! Good job.");
                     counter = 0;
                     correctCounter = 0;
+                    jf.dispose();
                 }
                 else {
                     if (counter >= 3) {
@@ -61,15 +62,11 @@ public class SignIn extends JPanel {
 
     private void checkCoordinates(Point p, int counter)
     {
-        System.out.println(counter);
-        Pair<Double, Double> firstPoint = new Pair<>(923.0, 921.0);
-        Pair first = new Pair<>(firstPoint, 1);
+        Pair<Double, Double> firstPoint = RegisterClicks.sequence.get(0);
 
-        Pair<Double, Double> secondPoint = new Pair<>(1047.0, 690.0);
-        Pair second = new Pair<>(secondPoint, 2);
+        Pair<Double, Double> secondPoint = RegisterClicks.sequence.get(1);
 
-        Pair<Double, Double> thirdPoint = new Pair<>(374.0, 818.0);
-        Pair third = new Pair<>(thirdPoint, 3);
+        Pair<Double, Double> thirdPoint = RegisterClicks.sequence.get(2);
 
         double x = p.getX();
         double y = p.getY();

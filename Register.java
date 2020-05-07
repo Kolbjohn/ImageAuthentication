@@ -8,13 +8,11 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
 
 public class Register extends JPanel {
     public static String chosenImage = "";
 
-    public Register(int i, int i1){
+    public Register(JFrame jf){
         JPanel panel = new JPanel(new GridBagLayout());
         panel.setBackground(Color.WHITE);
 
@@ -27,10 +25,10 @@ public class Register extends JPanel {
         Icon third = new ImageIcon(getResizedImage("beach.jpg"));
         JButton pic3 = new JButton(third);
 
-        Icon fourth = new ImageIcon(getResizedImage("city.jpg"));
+        Icon fourth = new ImageIcon(getResizedImage("forest.jpg"));
         JButton pic4 = new JButton(fourth);
 
-        Icon fifth = new ImageIcon(getResizedImage("mountains.jpg"));
+        Icon fifth = new ImageIcon(getResizedImage("newyork.jpg"));
         JButton pic5 = new JButton(fifth);
 
         panel.add(pic1);
@@ -41,27 +39,62 @@ public class Register extends JPanel {
 
         pic1.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-
+                chosenImage = "waterfall.jpg";
+                JFrame f = new JFrame();
+                f.setContentPane(new RegisterClicks(f));
+                f.setSize(1920,1080);
+                f.setLocation(0,0);
+                f.setResizable(false);
+                f.setVisible(true);
+                jf.dispose();
             }
         });
         pic2.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-
+                chosenImage = "animal.jpg";
+                JFrame f = new JFrame();
+                f.setContentPane(new RegisterClicks(f));
+                f.setSize(1920,1080);
+                f.setLocation(0,0);
+                f.setResizable(false);
+                f.setVisible(true);
+                jf.dispose();
             }
         });
         pic3.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-
+                chosenImage = "beach.jpg";
+                JFrame f = new JFrame();
+                f.setContentPane(new RegisterClicks(f));
+                f.setSize(1920,1080);
+                f.setLocation(0,0);
+                f.setResizable(false);
+                f.setVisible(true);
+                jf.dispose();
             }
         });
         pic4.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-
+                chosenImage = "forest.jpg";
+                JFrame f = new JFrame();
+                f.setContentPane(new RegisterClicks(f));
+                f.setSize(1920,1080);
+                f.setLocation(0,0);
+                f.setResizable(false);
+                f.setVisible(true);
+                jf.dispose();
             }
         });
         pic5.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-
+                chosenImage = "newyork.jpg";
+                JFrame f = new JFrame();
+                f.setContentPane(new RegisterClicks(f));
+                f.setSize(1920,1080);
+                f.setLocation(0,0);
+                f.setResizable(false);
+                f.setVisible(true);
+                jf.dispose();
             }
         });
 

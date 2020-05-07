@@ -24,7 +24,7 @@ public class ContentPanel extends JPanel {
                     return;
                 }
                 JFrame f = new JFrame();
-                f.setContentPane(new SignIn(5,5));
+                f.setContentPane(new SignIn(f));
                 f.setSize(1920,1080);
                 f.setLocation(0,0);
                 f.setResizable(false);
@@ -37,7 +37,7 @@ public class ContentPanel extends JPanel {
             public void mousePressed(MouseEvent e)
             {
                 JFrame f = new JFrame();
-                f.setContentPane(new Register(5,5));
+                f.setContentPane(new Register(f));
                 f.setSize(1920,600);
                 f.setLocation(0,0);
                 f.setResizable(false);
