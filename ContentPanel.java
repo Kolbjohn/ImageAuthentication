@@ -1,14 +1,16 @@
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+
 class ContentPanel extends JPanel {
 
     ContentPanel(){
-
         JPanel panel = new JPanel(new GridBagLayout());
         panel.setBackground(Color.WHITE);
+
         JButton button = new JButton("Sign In");
         JButton button2 = new JButton("Register");
 
@@ -24,6 +26,7 @@ class ContentPanel extends JPanel {
                     return;
                 }
                 JFrame f = new JFrame();
+                f.setTitle("Sign In");
                 f.setContentPane(new SignIn(f));
                 f.setSize(1920,1080);
                 f.setLocation(0,0);
@@ -37,6 +40,7 @@ class ContentPanel extends JPanel {
             public void mousePressed(MouseEvent e)
             {
                 JFrame f = new JFrame();
+                f.setTitle("Registration");
                 f.setContentPane(new Register(f));
                 f.setSize(1920,600);
                 f.setLocation(0,0);

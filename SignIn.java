@@ -26,14 +26,14 @@ class SignIn extends JPanel {
                 counter++;
                 checkCoordinates(p, counter);
                 if(correctCounter == 3){
-                    JOptionPane.showMessageDialog(null, "Correct password! Good job.");
+                    JOptionPane.showMessageDialog(jf, "Correct password! Good job.");
                     counter = 0;
                     correctCounter = 0;
                     jf.dispose();
                 }
                 else {
                     if (counter >= 3) {
-                        JOptionPane.showMessageDialog(null, "Incorrect password!");
+                        JOptionPane.showMessageDialog(jf, "Incorrect password!");
                         counter = 0;
                         correctCounter = 0;
                     }

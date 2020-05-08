@@ -4,8 +4,8 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 class Register extends JPanel {
     static String chosenImage = "";
@@ -39,6 +39,7 @@ class Register extends JPanel {
             public void mousePressed(MouseEvent e) {
                 chosenImage = "waterfall.jpg";
                 JFrame f = new JFrame();
+                f.setTitle("Registration");
                 f.setContentPane(new RegisterClicks(f));
                 f.setSize(1920,1080);
                 f.setLocation(0,0);
@@ -51,6 +52,7 @@ class Register extends JPanel {
             public void mousePressed(MouseEvent e) {
                 chosenImage = "animal.jpg";
                 JFrame f = new JFrame();
+                f.setTitle("Registration");
                 f.setContentPane(new RegisterClicks(f));
                 f.setSize(1920,1080);
                 f.setLocation(0,0);
@@ -63,6 +65,7 @@ class Register extends JPanel {
             public void mousePressed(MouseEvent e) {
                 chosenImage = "beach.jpg";
                 JFrame f = new JFrame();
+                f.setTitle("Registration");
                 f.setContentPane(new RegisterClicks(f));
                 f.setSize(1920,1080);
                 f.setLocation(0,0);
@@ -75,6 +78,7 @@ class Register extends JPanel {
             public void mousePressed(MouseEvent e) {
                 chosenImage = "forest.jpg";
                 JFrame f = new JFrame();
+                f.setTitle("Registration");
                 f.setContentPane(new RegisterClicks(f));
                 f.setSize(1920,1080);
                 f.setLocation(0,0);
@@ -87,6 +91,7 @@ class Register extends JPanel {
             public void mousePressed(MouseEvent e) {
                 chosenImage = "newyork.jpg";
                 JFrame f = new JFrame();
+                f.setTitle("Registration");
                 f.setContentPane(new RegisterClicks(f));
                 f.setSize(1920,1080);
                 f.setLocation(0,0);
@@ -103,7 +108,8 @@ class Register extends JPanel {
     private Image getResizedImage(String url){
         BufferedImage img = null;
         try {
-            img = ImageIO.read(new File(url));
+            URL u = ContentPanel.class.getResource(url);
+            img = ImageIO.read(u);
         } catch (IOException e) {
             e.printStackTrace();
         }
