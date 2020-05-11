@@ -8,13 +8,17 @@ import java.awt.event.MouseEvent;
 class ContentPanel extends JPanel {
 
     ContentPanel(){
-        JPanel panel = new JPanel(new GridBagLayout());
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
         panel.setBackground(Color.WHITE);
 
         JButton button = new JButton("Sign In");
+
         JButton button2 = new JButton("Register");
 
+        panel.add(Box.createRigidArea(new Dimension(80,0)));
         panel.add(button);
+        panel.add(Box.createRigidArea(new Dimension(30,0)));
         panel.add(button2);
 
         button.addMouseListener(new MouseAdapter()
